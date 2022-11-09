@@ -135,6 +135,29 @@ function matchingStrings(strings, queries) {
     return result
 }
 
-console.log(matchingStrings(['ab', 'ab', 'abc'], ['ab', 'abc', 'bc']))
+// console.log(matchingStrings(['ab', 'ab', 'abc'], ['ab', 'abc', 'bc']))
+function findMedian(arr) {
+    const sorted = arr.sort((a, b) => a - b);
+    // console.log(sorted);
+    const middle = Math.floor(sorted.length / 2);
+    // console.log(middle);
+    console.log((sorted[middle - 1] + sorted[middle]) / 2);
+    return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+}
 
+// console.log(findMedian([0, 1, 2, 4, 6, 5]))
+
+function lonelyinteger(a) {
+    const result = a.reduce((acc, curr) => {
+        if (acc[curr]) {
+            acc[curr] += 1;
+        } else {
+            acc[curr] = 1;
+        }
+        return acc
+    }, {})
+    return Object.keys(result).find(key => result[key] === 1);
+}
+
+console.log(lonelyinteger([1, 2, 3, 4, 1, 2, 3]))
 
