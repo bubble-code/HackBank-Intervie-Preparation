@@ -159,5 +159,76 @@ function lonelyinteger(a) {
     return Object.keys(result).find(key => result[key] === 1);
 }
 
-console.log(lonelyinteger([1, 2, 3, 4, 1, 2, 3]))
+// console.log(lonelyinteger([1, 2, 3, 4, 1, 2, 3]))
 
+// Week 2
+function gradingStudents(grades) {
+    if (grades < 38)
+        return grades
+    const nextMultiple = 5 - grades % 5
+    const isUpRounding = nextMultiple < 3 ? (grades + nextMultiple) : grades
+    return isUpRounding;
+
+    // return grades.map(grade => {
+    //     if (grade < 38) {
+    //         return grade;
+    //     }
+    //     const nextMultiple = Math.ceil(grade / 5) * 5;
+    //     if (nextMultiple - grade < 3) {
+    //         return nextMultiple;
+    //     }
+    //     return grade;
+    // })
+
+}
+// console.log(gradingStudents(4))
+
+function flippingBits(n) {
+    return ~n >>> 0;
+}
+
+// console.log(flippingBits(0))
+
+function diagonalDifference(arr) {
+    let left = 0, right = 0;
+    for (let i = 0; i < arr.length; i++) {
+        left += arr[i][i]
+        right += arr[i][arr.length - 1]
+    }
+    return Math.abs(left - right)
+}
+
+// let left = 0;
+//     let right = 0;
+//     for (let i = 0; i < arr.length; i++) {
+//         left += arr[i][i];
+//         right += arr[i][arr.length - 1 - i];
+//     }
+//     return Math.abs(left - right);
+
+function countingSort(arr) {
+    const arrResult = new Array(100).fill(0)
+    arr.forEach(ele => {
+        arrResult[ele] += 1
+    })
+    return arrResult
+}
+// console.log(countingSort([63, 25, 73, 1, 98, 73, 56, 84, 86, 57, 16, 83, 8, 25, 81, 56, 9, 53, 98, 67, 99, 12, 83, 89, 80, 91, 39, 86, 76, 85, 74, 39, 25, 90, 59, 10, 94, 32, 44, 3, 89, 30, 27, 79, 46, 96, 27, 32, 18, 21, 92, 69, 81, 40, 40, 34, 68, 78, 24, 87, 42, 69, 23, 41, 78, 22, 6, 90, 99, 89, 50, 30, 20, 1, 43, 3, 70, 95, 33, 46, 44, 9, 69, 48, 33, 60, 65, 16, 82, 67, 61, 32, 21, 79, 75, 75, 13, 87, 70, 33]))
+
+
+function countingValleys(steps, path) {
+    const result = path.split('').reduce((acc, step) => {
+        if (step === 'D') {
+            acc['s'] += 1
+            if (acc['s'] > 0 && acc['s'] < 2) {
+                acc.v += 1
+            }
+        } else {
+            acc['s'] -= 1
+        }
+        return acc
+    }, { s: 0, v: 0 })
+    return result['v']
+}
+
+console.log(countingValleys(8, 'DDUUDDUDUUUD'))
