@@ -231,4 +231,54 @@ function countingValleys(steps, path) {
     return result['v']
 }
 
-console.log(countingValleys(8, 'DDUUDDUDUUUD'))
+// console.log(countingValleys(8, 'DDUUDDUDUUUD'))
+function pangrams(s) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    const result = alphabet.split('').reduce((acc, char) => {
+        if (s.toLowerCase().includes(char)) {
+            acc += 1
+        }
+        return acc
+    }, 0)
+    return result === 26 ? 'pangram' : 'not pangram'
+}
+// console.log(pangrams('We promptly judged antique ivory buckles for the nextt prize'))    
+
+function marsExploration(s) {
+    const sos = 'SOS'
+    let count = 0
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== sos[i % 3]) {
+            count += 1
+        }
+    }
+    return count
+}
+// console.log(marsExploration('SOSOOSOSOSOSOSSOSOSOSOSOSOS'))
+
+function flippingMatrix(matrix) {
+    const n = matrix.length / 2;
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            const initial = matrix[i][j];
+            const second = matrix[i][2 * n - 1 - j];
+            const third = matrix[2 * n - 1 - i][j];
+            const fourth = matrix[2 * n - 1 - i][2 * n - 1 - j];
+            console.log('initial', initial, 'second', second, 'third', third, 'fourth', fourth)
+            const max = Math.max(initial, second, third, fourth);
+            console.log('max', max)
+            sum += max;
+            console.log('sum', sum)
+            sum += Math.max(initial, second, third, fourth);
+        }
+    }
+    return sum;
+}
+const matrix = [
+    [112, 42, 83, 119],
+    [56, 125, 56, 49],
+    [15, 78, 101, 43],
+    [62, 98, 114, 108]
+]
+// console.log(flippingMatrix(matrix))
