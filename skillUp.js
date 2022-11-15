@@ -282,3 +282,66 @@ const matrix = [
     [62, 98, 114, 108]
 ]
 // console.log(flippingMatrix(matrix))
+
+function twoArrays(k, A, B) {
+    const sortedA = A.sort((a, b) => a - b);
+    const sortedB = B.sort((a, b) => b - a);
+    for (let i = 0; i < sortedA.length; i++) {
+        if (sortedA[i] + sortedB[i] < k) {
+            return 'NO'
+        }
+    }
+    return 'YES'
+}
+
+function birthday(s, d, m) {
+    let count = 0;
+    let i = 0;
+    while (i <= s.length - 1) {
+        let tem = s.slice(i, m + i)
+        console.log(tem)
+        let count2 = 0;
+        tem.forEach(item => {
+            count2 += item
+        })
+        if (count2 === d) {
+            count += 1
+        }
+        i++;
+    }
+    return count
+}
+
+// console.log(birthday([1, 2, 1, 3, 2], 3, 2))
+
+function sockMerchant(n, ar) {
+    let result = 0;
+    ar.reduce((acc, curr) => {
+        if (acc[curr] === undefined) {
+            acc[curr] = 1
+        } else {
+            acc[curr] += 1;
+            if (acc[curr] % 2 === 0) {
+                result += 1;
+            }
+        }
+        return acc
+    }, {})
+    return result
+}
+
+// console.log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]))
+
+function migratoryBirds(arr) {
+    const grouped = [];
+    arr.forEach((item, idx) => {
+        if (grouped[item] === undefined) {
+            grouped[item] = 1;
+        } else {
+            grouped[item] += 1;
+        }
+    })
+    return Math.min(...Object.values(grouped).filter(item => item > 1))
+}
+
+console.log(migratoryBirds([1, 1, 2, 2, 3]))
