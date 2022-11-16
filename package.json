@@ -1,0 +1,22 @@
+{
+  "name": "hackbank-intervie-preparation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "skillUp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bubble-code/HackBank-Intervie-Preparation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bubble-code/HackBank-Intervie-Preparation/issues"
+  },
+  "homepage": "https://github.com/bubble-code/HackBank-Intervie-Preparation#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}

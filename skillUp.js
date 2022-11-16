@@ -333,15 +333,42 @@ function sockMerchant(n, ar) {
 // console.log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]))
 
 function migratoryBirds(arr) {
-    const grouped = [];
-    arr.forEach((item, idx) => {
-        if (grouped[item] === undefined) {
-            grouped[item] = 1;
+    const result = arr.reduce((acc, curr) => {
+        if (acc[curr] === undefined) {
+            acc[curr] = 1
         } else {
-            grouped[item] += 1;
+            acc[curr] += 1
         }
-    })
-    return Math.min(...Object.values(grouped).filter(item => item > 1))
+        return acc
+    }, {})
+    const max = Math.max(...Object.values(result))
+    const arrMax = Object.entries(result).filter(item => item[1] === max)
+    return arrMax[0][0]
+}
+// console.log(migratoryBirds([1 ,2 ,3 ,4 ,5 ,4 ,3, 2 ,1 ,3 ,4]))
+
+function maximumPerimeterTriangle(sticks) {
+    sticks.sort((a, b) => a - b)
+    for (let i = sticks.length - 1; i >= 2; i--) {
+        if (sticks[i] < sticks[i - 1] + sticks[i - 2]) {
+            return [sticks[i - 2], sticks[i - 1], sticks[i]]
+        }
+    }
+    return [-1]
+}
+function maximumPerimeterTriangle(sticks) {
+    sticks.sort((a, b) => b - a)
+    let i = 0;
+    console.log(sticks)
+    while (i < sticks.length - 2) {
+        const [f, s, t] = sticks.slice(i, i + 3)
+        const isTriangle = f < s + t
+        if (isTriangle) {
+            return [t, s, f]
+        }
+        i++
+    }
+    return [-1]
 }
 
-console.log(migratoryBirds([1, 1, 2, 2, 3]))
+console.log(maximumPerimeterTriangle([1, 2, 3]))
