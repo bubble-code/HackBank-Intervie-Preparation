@@ -391,4 +391,32 @@ function getTotalX(a, b) {
     return count
 }
 
-console.log(getTotalX([2, 4], [16, 32, 96]))
+// console.log(getTotalX([2, 4], [16, 32, 96]))
+
+function pickingNumbers(a) {
+    console.time('start')
+    let max = 0;
+    for (let i = 0; i < a.length; i++) {
+        const count = a.filter(item => item === a[i] || item === a[i] + 1).length
+        max = Math.max(max, count)
+    }
+    console.timeEnd('start')
+    return max
+}
+
+// console.log("copy", pickingNumbers([1, 2, 2, 3, 1, 2]))
+
+function rotateLeft(d, arr) {
+    const subA = arr.splice(0, d)
+    return [...arr, ...subA]
+}
+
+// console.log(rotateLeft(2, [1, 2, 3, 4, 5]))
+
+function kangaroo(x1, v1, x2, v2) {
+    if (v1 > v2)
+        while ((x1 += v1) < (x2 += v2)) { }
+    return x1 === x2 ? 'YES' : 'NO'
+}
+
+console.log(kangaroo(0, 2, 5, 3))
