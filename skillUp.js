@@ -371,4 +371,24 @@ function maximumPerimeterTriangle(sticks) {
     return [-1]
 }
 
-console.log(maximumPerimeterTriangle([1, 2, 3]))
+// console.log(maximumPerimeterTriangle([1, 2, 3]))
+
+function pageCount(n, p) {
+    const fromFront = Math.floor(p / 2)
+    const fromBack = Math.floor(n / 2) - fromFront
+    return Math.min(fromFront, fromBack)
+}
+
+// console.log(pageCount(5, 4))
+
+function getTotalX(a, b) {
+    let count = 0;
+    for (let i = 1; i <= 100; i++) {
+        if (a.every(item => i % item === 0) && b.every(item => item % i === 0)) {
+            count += 1
+        }
+    }
+    return count
+}
+
+console.log(getTotalX([2, 4], [16, 32, 96]))
