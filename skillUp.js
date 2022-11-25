@@ -419,4 +419,22 @@ function kangaroo(x1, v1, x2, v2) {
     return x1 === x2 ? 'YES' : 'NO'
 }
 
-console.log(kangaroo(0, 2, 5, 3))
+// console.log(kangaroo(0, 2, 5, 3))
+
+function separateNumbers(s) {
+
+}
+function beatifulNumberString(s) {
+    let result = 'NO'
+    for (let i = 1; i <= s.length / 2; i++) {
+        let num = s.slice(0, i)
+        let num2 = s.slice(i, i * 2)
+        if (num2 - num === 1) {
+            result = 'YES'
+        }
+    }
+    return result
+}
+
+
+console.log(separateNumbers('123450'))
