@@ -421,9 +421,6 @@ function kangaroo(x1, v1, x2, v2) {
 
 // console.log(kangaroo(0, 2, 5, 3))
 
-function separateNumbers(s) {
-
-}
 function beatifulNumberString(s) {
     let result = 'NO'
     for (let i = 1; i <= s.length / 2; i++) {
@@ -437,4 +434,35 @@ function beatifulNumberString(s) {
 }
 
 
-console.log(separateNumbers('123450'))
+// console.log(separateNumbers('123450'))
+
+function closestNumber(arr) {
+    arr.sort((a, b) => a - b)
+    let diff = Infinity
+    let result = []
+    for (let i = 1; i < arr.length; i++) {
+        if (diff == Math.abs(arr[i - 1] - arr[i])) {
+            result.push([arr[i - 1], arr[i]])
+        } else if (diff > Math.abs(arr[i - 1] - arr[i])) {
+            result = [[arr[i - 1], arr[i]]]
+            diff = Math.abs(arr[i - 1] - arr[i])
+        }
+    }
+    return result.flat()
+}
+
+// console.log(closestNumnbr([5, 2, 3, 4, 1]))
+
+const orderByInsertion = (arr) => {
+    for (let i = 1; i < arr.length; i++) {
+        let currentValue = arr[i]
+        let j = i;
+        for (; j > 0 && arr[j - 1] > currentValue; j--) {
+            arr[j] = arr[j - 1]
+        }
+        arr[j] = currentValue;
+    }
+    return arr;
+}
+
+// console.log(orderByInsertion([4, 1, 3, -2]))
