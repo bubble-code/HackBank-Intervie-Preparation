@@ -466,3 +466,39 @@ const orderByInsertion = (arr) => {
 }
 
 // console.log(orderByInsertion([4, 1, 3, -2]))
+
+function towerBreakers(n, m) {
+    const dividenList = [1, 2, 3, 5, 7, 9, 10]
+    const divisibleList = []
+    dividenList.forEach(item => {
+        if (m % item === 0) {
+            divisibleList.push(item)
+        }
+    })
+    console.log(divisibleList)
+}
+
+// towerBreakers(2, 2)
+
+function simpleArraySum(ar) {
+    // Write your code here
+    return ar.reduce((acc, curr) => acc + curr, 0)
+
+}
+
+function diagonalDifference2(arr) {
+    let left = 0, right = 0;
+    for (let i = 0; i < arr.length; i++) {
+        left += arr[i][i]
+        right += arr[i][arr.length - 1 - i]
+    }
+    return Math.abs(left - right)
+}
+
+console.log(diagonalDifference2([
+    [11, 2, 4],
+    [4, 5, 6],
+    [10, 8, -12]
+]
+)
+)
