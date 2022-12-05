@@ -437,13 +437,12 @@ function rotateLeft(d, arr) {
 // console.log(rotateLeft(2, [1, 2, 3, 4, 5]))
 
 function kangaroo(x1, v1, x2, v2) {
-  if (v1 > v2) while ((x1 += v1) < (x2 += v2)) {}
+  if (v1 > v2) while ((x1 += v1) < (x2 += v2)) { }
   return x1 === x2 ? "YES" : "NO";
 }
 
 // console.log(kangaroo(0, 2, 5, 3))
 
-function separateNumbers(s) {}
 function beatifulNumberString(s) {
   let result = "NO";
   for (let i = 1; i <= s.length / 2; i++) {
@@ -493,4 +492,23 @@ const miniMaxSum = (arr) => {
   return `${min} ${max}`;
 };
 
-// console.log(miniMaxSum([1, 2, 3, 4, 5]));
+// console.log(separateNumbers('123450'))
+
+// console.log(orderByInsertion([4, 1, 3, -2]))
+
+function towerBreakers(n, m) {
+  return m === 1 || n % 2 === 0 ? 2 : 1;
+}
+
+function minimumAbsoluteDifference(arr) {
+  let min = Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j <= arr.length; j++) {
+      const abs = Math.abs(arr[i] - arr[j])
+      if (abs < min) {
+        min = abs
+      }
+    }
+  }
+  return min
+}
