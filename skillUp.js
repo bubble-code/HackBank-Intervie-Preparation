@@ -512,3 +512,17 @@ function minimumAbsoluteDifference(arr) {
   }
   return min
 }
+
+function orderByInsertion(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    const curr = arr[i]
+    let j = i;
+    for (; j > 0 && curr < arr[j - 1]; j--) {
+      arr[j] = arr[j - 1]
+    }
+
+    
+    arr[j] = curr
+  }
+  return arr
+}
