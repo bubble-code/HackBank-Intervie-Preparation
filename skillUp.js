@@ -547,4 +547,18 @@ function miniMaxSum2(arr) {
   console.log(`${min} ${max}`)
 }
 
-console.log(miniMaxSum2([1, 4, 2, 5, 3]))
+// console.log(miniMaxSum2([1, 4, 2, 5, 3]))
+
+// 100000
+function birthdayCakeCandles2(candles) {
+  const re = candles.reduce((acc, curr) => {
+    if (!acc[curr]) {
+      acc[curr] = 0
+    }
+    acc[curr] += 1
+    return acc
+  }, {})
+  return Math.max(...Object.values(re))
+}
+
+console.log(birthdayCakeCandles2([3, 2, 1, 3]))
