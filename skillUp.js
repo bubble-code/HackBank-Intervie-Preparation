@@ -494,11 +494,42 @@ function diagonalDifference2(arr) {
     }
     return Math.abs(left - right)
 }
+// console.log(diagonalDifference2([[11, 2, 4], [4, 5, 6], [10, 8, -12]]))
 
-console.log(diagonalDifference2([
-    [11, 2, 4],
-    [4, 5, 6],
-    [10, 8, -12]
-]
-)
-)
+function plusMinus2(arr) {
+    const len = arr.length
+    const countList = arr.reduce((acc, curr) => {
+        if (curr > 0) {
+            acc[0] += 1
+        } else if (curr < 0) {
+            acc[1] += 1
+        } else {
+            acc[2] += 1
+        }
+        return acc
+    }, [0, 0, 0])
+
+    console.log((countList[0] / len).toFixed(6))
+    console.log((countList[1] / len).toFixed(6))
+    console.log((countList[2] / len).toFixed(6))
+
+    // return countList[0]
+}
+
+// console.log(plusMinus2([-4, 3, -9, 0, 4, 1]))
+
+function staircase2(n) {
+    // for (let i = 1; i <= n; i++) {
+    //     console.log(' '.repeat(n - i) + '#'.repeat(i))
+    // }
+    for (let j = 1; j <= n; j++) {
+        const te = new Array(n).fill(' ');
+        for (let i = n - 1; i >= (n - j); i--) {
+            te[i] = '#'
+        }
+        console.log(te.join(''))
+    }
+    // return st
+}
+
+staircase2(30)
