@@ -520,9 +520,31 @@ function orderByInsertion(arr) {
     for (; j > 0 && curr < arr[j - 1]; j--) {
       arr[j] = arr[j - 1]
     }
-
-    
     arr[j] = curr
   }
   return arr
 }
+
+
+function compareTriplets(a, b) {
+  const rank = a.reduce((acc, curr, idx) => {
+    if (curr > b[idx]) {
+      acc[0] += 1
+    } else if (curr < b[idx]) {
+      acc[1] += 1
+    }
+    return acc
+  }, [0, 0])
+  return rank
+}
+
+// console.log(compareTriplets([17, 28, 30], [99, 16, 8]))
+
+function miniMaxSum2(arr) {
+  const sortList = arr.sort((a, b) => a - b)
+  const min = sortList.slice(0, 4).reduce((acc, curr) => acc += curr, 0)
+  const max = sortList.slice(-4).reduce((acc, curr) => acc += curr, 0)
+  console.log(`${min} ${max}`)
+}
+
+console.log(miniMaxSum2([1, 4, 2, 5, 3]))
