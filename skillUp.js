@@ -561,4 +561,14 @@ function birthdayCakeCandles2(candles) {
   return Math.max(...Object.values(re))
 }
 
-console.log(birthdayCakeCandles2([3, 2, 1, 3]))
+// console.log(birthdayCakeCandles2([3, 2, 1, 3]))
+
+function timeConversion2(s) {
+  const ampm = s.slice(0, -2).split(':')
+  const isPM = s.slice(-2) === 'PM'
+  ampm[0] = isPM ? ((+ampm[0] % 12) + 12).toString().padStart(2, '0') : (+ampm[0] % 12).toString().padStart(2, '0')
+  return ampm.join(':')
+}
+
+
+console.log(timeConversion2('12:45:54PM'))
