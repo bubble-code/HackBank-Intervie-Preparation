@@ -571,4 +571,59 @@ function timeConversion2(s) {
 }
 
 
-console.log(timeConversion2('12:45:54PM'))
+// console.log(timeConversion2('12:45:54PM'))
+function gradingStudents(grades) {
+  const isFail = grades < 40
+  const rst = grades
+}
+
+function tribonacci(signature, n) {
+  if (n === 0) {
+    return 0
+  } else if (n < 3) {
+    return signature.splice(0, n)
+  }
+  const result = signature.slice()
+  for (let i = 3; i < n; i++) {
+    result[i] = (result[i - 1] + result[i - 2] + result[i - 3])
+  }
+  return result
+}
+
+// console.log(tribonacci([0, 0, 1], 9))
+
+function existeSuma(lista, suma) {
+  if (lista.length == 0)
+    return false;
+  if (lista.includes(suma))
+    return true;
+  let ultimo = lista.pop();
+  if (suma > ultimo)
+    return existeSuma(lista, suma - ultimo)
+  else
+    return existeSuma(lista, suma)
+}
+numeros = [1, 1, 5, 4];
+suma = 3;
+// console.table(numeros);
+// console.log(suma);
+// console.log(existeSuma(numeros, suma));
+
+function caesarCipher2(s, k) {
+  const origiAlpha = 'abcdefghijklmnopqrstuvwxyz';
+  const upperAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let result = []
+  for (let j = 0; j < s.length; j++) {
+    if (origiAlpha.indexOf(s[j]) != -1) {
+      console.log((origiAlpha.indexOf(s[j]) + k))
+      result.push(origiAlpha[(origiAlpha.indexOf(s[j]) + k) % origiAlpha.length])
+    } else if (upperAlpha.indexOf(s[j]) != -1) {
+      result.push(upperAlpha[(upperAlpha.indexOf(s[j]) + k) % upperAlpha.length])
+    } else {
+      result.push(s[j])
+    }
+  }
+  return result.join('')
+}
+
+console.log(caesarCipher2('middle-Outz', 2),)
