@@ -35,19 +35,33 @@
 
 # findZigZagSequence(list([1, 2, 3, 4, 5, 6, 7]), 7)
 
-import time
+# import time
 
 
-def progress_bar(step:int, total:int, len:int)->str:
-    frac = step/total
-    completed = int(frac*len)
-    rest = len - completed
-    return f"[{'#'*completed}{'-'*rest}]{frac:.0%}"
+# def progress_bar(step:int, total:int, len:int)->str:
+#     frac = step/total
+#     completed = int(frac*len)
+#     rest = len - completed
+#     return f"[{'#'*completed}{'-'*rest}]{frac:.0%}"
 
 
-n = 30
-l = 10
+# n = 30
+# l = 10
 
-for i in range(n+1):
-    time.sleep(0.1)
-    print(progress_bar(i, 30, l), end='\r')
+# for i in range(n+1):
+#     time.sleep(0.1)
+#     print(progress_bar(i, 30, l), end='\r')
+
+def maxMin(k, arr):
+    # Sort the array in ascending order
+    arr.sort()
+    n = len(arr)
+    xmin = arr[-1]        # Initialise with the maximum value in the array
+    for i in range(n-k+1):
+        # If the difference between elements with distance 'k' is less than minimum, update the minimum
+        if arr[i+k-1]-arr[i] < xmin:
+            xmin = arr[i+k-1]-arr[i]
+    return xmin
+
+
+maxMin(4, [2, 8, 2, 4, 4, 1])

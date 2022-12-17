@@ -626,4 +626,87 @@ function caesarCipher2(s, k) {
   return result.join('')
 }
 
-console.log(caesarCipher2('middle-Outz', 2),)
+// console.log(caesarCipher2('middle-Outz', 2),)
+
+function anagram(s) {
+  if (s.length % 2 !== 0) {
+    return -1
+  }
+  const mid = s.length / 2
+  const first = s.slice(0, mid)
+  const second = s.slice(mid)
+  // console.log(first, second)
+  let result = 0
+  for (let i = 0; i < mid; i++) {
+    if (second.indexOf(first[i]) === -1) {
+      result += 1
+    } else {
+      second[i] = 0
+    }
+  }
+  return result
+}
+0
+// console.log(anagram('abccde'))*
+
+function maxMin(k, arr) {
+  const sortArr = arr.sort((a, b) => a - b)
+  let min = Infinity
+  for (let i = 0; i < sortArr.length - k + 1; i++) {
+    const unForable = sortArr[i + k - 1] - sortArr[i]
+    if (unForable < min) { min = unForable }
+  }
+  return min
+}
+
+// console.log(maxMin(2, [1, 2, 1, 2, 1]))
+
+// 1335
+function minimumNumber(n, password) {
+  const length = password.length
+  const len = length >= 6 ? 0 : 6 - length
+  const digit = password.match(/^(?=.*\d)/) ? 0 : 1
+  const lowcase = password.match(/^(?=.*[a-z])/) ? 0 : 1
+  const uppercase = password.match(/^(?=.*[A-Z])/) ? 0 : 1
+  const especial = password.match(/^(?=.*[!@#$%^&*()\-+])/) ? 0 : 1
+  const total = digit + lowcase + uppercase + especial
+  return total <= len ? len : total
+}
+
+// console.log(minimumNumber(0, 'AUzs-nV'))*
+
+//     /^(?=.{8,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-+])/
+// Note that the backslash (\) is used to escape the special characters in the regular expression,
+//  such as the hyphen (-) and plus (+) signs. This is necessary because these 
+// characters have special meanings in regular expressions, and must be escaped to match them literally.
+
+// Has a minimum length of 8 characters (the .{8,} part)
+// Contains at least one digit (the \d part)
+// Contains at least one lowercase English character (the [a-z] part)
+// Contains at least one uppercase English character (the [A-Z] part)
+// Contains at least one of the specified special characters (the [!@#$%^&*()-+] part)
+
+
+/////////////// ignore above this line ////////////////////
+function multiple(n, divisor) {
+  const three = ((BigInt(n) - 1n) / divisor)
+  return (divisor * three * (three + 1n)) / 2n
+}
+
+console.log(`${multiple(10, 3n) + multiple(10, 5n) - multiple(10, 15n)}`)
+
+// def sum_of_multiples(n):
+//   # calculate the sum of the multiples of 3
+//   sum_3 = 3 * (n // 3) * (1 + (n // 3)) // 2
+
+//   # calculate the sum of the multiples of 5
+//   sum_5 = 5 * (n // 5) * (1 + (n // 5)) // 2
+
+//   # calculate the sum of the multiples of 15
+//   sum_15 = 15 * (n // 15) * (1 + (n // 15)) // 2
+
+//   # return the sum of the multiples of 3, 5, and 15
+//   return sum_3 + sum_5 - sum_15
+
+// # test the function
+// print(sum_of_multiples(10))  
