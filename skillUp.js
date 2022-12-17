@@ -693,7 +693,7 @@ function multiple(n, divisor) {
   return (divisor * three * (three + 1n)) / 2n
 }
 
-console.log(`${multiple(10, 3n) + multiple(10, 5n) - multiple(10, 15n)}`)
+// console.log(`${multiple(10, 3n) + multiple(10, 5n) - multiple(10, 15n)}`)
 
 // def sum_of_multiples(n):
 //   # calculate the sum of the multiples of 3
@@ -710,3 +710,20 @@ console.log(`${multiple(10, 3n) + multiple(10, 5n) - multiple(10, 15n)}`)
 
 // # test the function
 // print(sum_of_multiples(10))  
+
+function fibonacci(N) {
+
+  let first = 1n;
+  let second = 2n;
+  let sum = 0n;
+  while (second <= N) {
+    if (second % 2n === 0n) {
+      sum += second;
+    }
+    [first, second] = [second, first + second];
+
+  }
+  console.log(`${sum}`)
+}
+
+fibonacci(100)
