@@ -174,7 +174,7 @@ function lonelyinteger(a) {
 // Week 2
 function gradingStudents(grades) {
   if (grades < 38) return grades;
-  const nextMultiple = 5 - (grades % 5);
+  const nextMultiple = 5 - (grades % 5);  
   const isUpRounding = nextMultiple < 3 ? grades + nextMultiple : grades;
   return isUpRounding;
 
