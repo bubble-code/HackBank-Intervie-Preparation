@@ -174,7 +174,7 @@ function lonelyinteger(a) {
 // Week 2
 function gradingStudents(grades) {
   if (grades < 38) return grades;
-  const nextMultiple = 5 - (grades % 5);  
+  const nextMultiple = 5 - (grades % 5);
   const isUpRounding = nextMultiple < 3 ? grades + nextMultiple : grades;
   return isUpRounding;
 
@@ -692,6 +692,9 @@ function multiple(n, divisor) {
   const three = ((BigInt(n) - 1n) / divisor)
   return (divisor * three * (three + 1n)) / 2n
 }
+function sumTo(n) {
+  return n * (n + 1) / 2;
+}
 
 // console.log(`${multiple(10, 3n) + multiple(10, 5n) - multiple(10, 15n)}`)
 
@@ -726,4 +729,102 @@ function fibonacci(N) {
   console.log(`${sum}`)
 }
 
-fibonacci(100)
+// fibonacci(100)
+
+function sansaXor(arr) {
+  if (arr.length % 2 === 0)
+    return 0
+  let xnum = 0;
+  for (let i = 0; i < arr.length; i += 2) {
+    xnum = xnum ^ arr[i]
+  }
+  return xnum
+}
+
+// console.log("final", sansaXor([1,2,3]))
+
+// ------------------------------------------
+function bruteForce(original, allSub = [], currentSub = [], start = 0) {
+  // console.log(start)
+  // for (let position = start; position < original.length; position++) {
+  //   currentSub.push(original[position]);
+  //   allSub.push([...currentSub]);
+  //   bruteForce(original, allSub, currentSub, position + 1);
+  //   currentSub.pop();
+  // }
+  // return allSub
+}
+
+
+function PowerSet(originalSet, subSet = [], currentSet = [], start = 0) {
+  for (let position = start; position < originalSet.length; position++) {
+    console.log(position)
+    currentSet.push(originalSet[position])
+    subSet.push([...currentSet])
+    PowerSet(originalSet, subSet, currentSet, position + 1)
+    console.log("otra", position)
+    currentSet.pop()
+  }
+  return subSet
+}
+
+function powerSet(originalSet) {
+  let subsets = [[]];
+  for (let item of originalSet) {
+    let length = subsets.length
+    for (let i = 0; i < length; i++) {
+      subsets.push(subsets[i].concat(item));
+    }
+  }
+  return subsets;
+}
+
+// console.log(powerSet([1, 2, 3]))
+
+function fibonacciModified(t1, t2, n) {
+  // Write your code here
+  let i = 2;
+  let nu = t1 + (t2 * t2)
+  let res = [].push(nu)
+  while (i < n) {
+    nu.push()
+    i++
+  }
+  return nu
+}
+// console.log(fibonacciModified(0, 1, 6))
+
+function countDivisibleBy3(start, end) {
+  // Find the first number in the range that is divisible by 3
+  while (start % 3 !== 0) {
+    start++;
+  }
+
+  // Find the last number in the range that is divisible by 3
+  while (end % 3 !== 0) {
+    end--;
+  }
+
+  // Use the formula for the sum of an arithmetic series to find the number of integers divisible by 3
+  let n = (end - start) / 3 + 1;
+  return n;
+}
+// console.log(countDivisibleBy3(10, 20))
+
+
+function balancedSums(arr) {
+  let left = arr.slice(0, arr.length / 2)
+  let right = arr.slice(arr.length / 2, arr.length)
+  let last = 0
+  // while (arr.length > 1) {
+  //   if (left < right) {
+  //     left = left + arr.shift()
+  //   }
+  //   if (left > right) {
+  //     right = right + arr.pop()
+  //   }
+  //   if (arr.length != 1) last = arr.shift()
+  // }
+  return { left, right }
+}
+console.log(balancedSums([11, 6, 8, 11]))
