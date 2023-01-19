@@ -813,8 +813,8 @@ function countDivisibleBy3(start, end) {
 
 
 function balancedSums(arr) {
-  let left = arr.slice(0, arr.length / 2)
-  let right = arr.slice(arr.length / 2, arr.length)
+  let arrayLeft = arr.slice(0, arr.length / 2)
+  let arrRight = arr.slice(arr.length / 2, arr.length)
   let last = 0
   // while (arr.length > 1) {
   //   if (left < right) {
